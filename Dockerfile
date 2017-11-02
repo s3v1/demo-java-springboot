@@ -30,7 +30,7 @@ COPY --chown=app:app . .
 
 # Resolve and Build
 #RUN ./gradlew build
-RUN ./mvnw package
+RUN ./mvnw verify
 
 EXPOSE 8080
 # Using tini: https://github.com/krallin/tini#using-tini

@@ -1,0 +1,8 @@
+<FindBugsFilter>
+    <Match>
+        <!-- Use the bug category below, to ONLY look at security bugs
+        <Bug category="SECURITY"/> 
+        -->
+    </Match>
+</FindBugsFilter>
+
