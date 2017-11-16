@@ -1,0 +1,9 @@
+FROM openjdk:8u131-jdk-alpine
+# Create a user to use instead of root
+RUN addgroup -S app && adduser -S -g app app 
+WORKDIR /app
+RUN chown app:app /app
+COPY --chown=app:app . .
+USER app
+RUN ./mvnw verify
+CMD ["java", "-jar", "target/gs-spring-boot-0.1.0.jar"]

@@ -1,0 +1,5 @@
+FROM openjdk:8u131-jdk-alpine
+WORKDIR /app
+COPY . . 
+RUN ./mvnw verify
+CMD ["java", "-jar", "target/gs-spring-boot-0.1.0.jar"]
