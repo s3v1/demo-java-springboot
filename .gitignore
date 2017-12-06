@@ -24,7 +24,6 @@ hs_err_pid*
 #Eclipse, maven, gradle files
 .classpath
 .gradle
-.mvn
 .project
 .settings
 .vscode
