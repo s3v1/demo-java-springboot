@@ -10,3 +10,20 @@ A demo of spring boot
 - Add spotbugs instead of findbugs: https://spotbugs.github.io/
 - Add http://fb-contrib.sourceforge.net/ for spotbugs
 
+# Docker based development
+## Get a shell prompt
+You can a start a docker container with the java build tools, if you don't have or want to install them locally
+
+    docker run -it --rm -v $PWD:/app -w='/app' openjdk:8u131-jdk-alpine sh
+
+For a disposable sh with the JDK ready to use.
+After you get the shell prompt, you do:
+
+    ./mvnw verify
+
+...to build the project. All without java or maven installed locally.
+
+## All-in-one build
+As an alternative, you can run the build and terminate the container in one go like this:
+
+    docker run -it --rm -v $PWD:/app -w='/app' openjdk:8u131-jdk-alpine ./mvnw clean verify
