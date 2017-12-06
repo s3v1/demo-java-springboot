@@ -15,7 +15,7 @@ COPY --chown=app:app pom.xml mvnw ./
 RUN ./mvnw dependency:go-offline
 
 # Copy over the rest of the source
-COPY . . 
+COPY --chown=app:app . . 
 
 # Build & verify (linting etc.)
 RUN ./mvnw -T 1C verify
