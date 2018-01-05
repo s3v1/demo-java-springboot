@@ -7,7 +7,8 @@ FROM openjdk:8u131-jdk-alpine as builder
 
 # Create an 'app' user, so we don't run the install as root. 
 # There could potentially be malicious code in the package manager repo
-RUN addgroup -S app && adduser -S -g app app 
+RUN addgroup -g 1000 app \
+    && adduser -u 1000 -G app -s /bin/sh -D app
 # Create the working folder and change owner
 WORKDIR /app
 RUN chown -R app:app /app  
