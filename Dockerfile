@@ -1,6 +1,10 @@
 #To build this image:
 #
-#   docker build -t ${PWD##*/}:latest .
+#    docker build -t ${PWD##*/}:latest .
+#
+#To run it, use this command:
+#
+#    docker run -it --rm ${PWD##*/}:latest
 #
 # Use an alpine based image as it's smaller to download and matches the run-time image
 FROM openjdk:8u131-jdk-alpine as builder

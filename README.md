@@ -27,3 +27,28 @@ After you get the shell prompt, you do:
 As an alternative, you can run the build and terminate the container in one go like this:
 
     docker run -it --rm -v $PWD:/app -w='/app' openjdk:8u131-jdk-alpine ./mvnw clean verify
+
+
+
+## Linting
+
+//docker run -it --rm -v "$PWD:/app" -w /app openjdk:8u131-jdk-alpine ./mvnw verify
+
+docker run -it --rm -v "$PWD:/app" -w /app openjdk:8u131-jdk-alpine
+
+./mvnw verify
+
+# https://gleclaire.github.io/findbugs-maven-plugin/plugin-info.html
+./mvnw findbugs:check
+./mvnw findbugs:gui
+
+## https://maven.apache.org/plugins/maven-pmd-plugin/
+./mvnw pmd:check
+
+# https://maven.apache.org/plugins/maven-checkstyle-plugin/plugin-info.html
+# http://google.github.io/styleguide/javaguide.html
+./mvnw checkstyle:check
+
+## http://spotbugs.readthedocs.io/en/latest/maven.html
+./mvnw spotbugs:check
+./mvnw spotbugs:gui
