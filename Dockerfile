@@ -27,6 +27,7 @@ RUN ./mvnw dependency:go-offline
 COPY --chown=app:app . . 
 
 # Build & verify (linting etc.)
+ENV MAVEN_OPTS='-XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Xmx1024m'
 RUN ./mvnw -T 1C verify
 
 # Use a Multistage build to use a smaller JRE-only image that is leaner and safer: https://docs.docker.com/engine/userguide/eng-image/multistage-build/
@@ -44,7 +45,7 @@ WORKDIR /app
 RUN chown -R nobody:nobody /app  
 
 #Copy the runtime files from the builder image
-COPY --from=builder --chown=nobody:nobody /app/target/gs-spring-boot-0.1.0.jar app.jar
+COPY --from=builder --chown=nobody:nobody /app/target/demo-java-springboot-*.jar app.jar
 
 #Switch to the nobody user for security. NEVER run a container as root.
 USER nobody

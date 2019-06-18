@@ -11,3 +11,5 @@ Dockerfile
 target
 build
 bin
+build.sh
+lint.sh
