@@ -52,6 +52,6 @@ USER nobody
 
 EXPOSE 8080
 
-# Using tini: https://github.com/krallin/tini#using-tini
+# Using tini: https://github.com/krallin/tini#using-tini ... it makes things like ctrl-c work as expected
 CMD ["/sbin/tini", "-g", "java", "-jar", "app.jar"]
 HEALTHCHECK --interval=10s --start-period=10s --timeout=1s --retries=3 CMD sh -c 'curl -s --connect-timeout 10 'http://localhost:8080' | grep -i -m 1 "Spring Boot" || exit 1'

@@ -6,5 +6,5 @@ set -euo pipefail
 
 DOCKER_BUILDKIT=1 docker build --tag s3v1/demo-java-springboot:latest .
 
-echo "INFO: To run: docker run --rm -it -P 8080:8080 s3v1/demo-java-springboot:latest"
+echo "INFO: To run: docker run --rm -it -p 8080:8080 s3v1/demo-java-springboot:latest"
 echo "      Then check http://localhost:8080"

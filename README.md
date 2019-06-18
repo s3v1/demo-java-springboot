@@ -1,17 +1,24 @@
 # demo-java-springboot
+
 A demo of spring boot
 
 ## badges
+
 [![Maintainability](https://api.codeclimate.com/v1/badges/96357558930fe1353fd4/maintainability)](https://codeclimate.com/github/svilstrup/demo-java-springboot/maintainability)
 
 [![Docker Build](https://img.shields.io/docker/build/svilstrup/demo-java-springboot.svg)](https://hub.docker.com/r/svilstrup/demo-java-springboot/)
 
-# TODO
-- Add spotbugs instead of findbugs: https://spotbugs.github.io/
-- Add http://fb-contrib.sourceforge.net/ for spotbugs
+## TODO
 
-# Docker based development
-## Get a shell prompt
+- Add spotbugs instead of findbugs: <https://spotbugs.github.io/>
+- Add <http://fb-contrib.sourceforge.net/> for spotbugs
+
+## Docker based development
+
+You have two options for docker-based development, shell prompt or all-in-one build
+
+### Get a shell prompt
+
 You can a start a docker container with the java build tools, if you don't have or want to install them locally
 
     docker run -it --rm -v $PWD:/app -w='/app' openjdk:8u131-jdk-alpine sh
@@ -23,32 +30,14 @@ After you get the shell prompt, you do:
 
 ...to build the project. All without java or maven installed locally.
 
-## All-in-one build
+### All-in-one build
+
 As an alternative, you can run the build and terminate the container in one go like this:
 
     docker run -it --rm -v $PWD:/app -w='/app' openjdk:8u131-jdk-alpine ./mvnw clean verify
 
+### Linting
 
+Linting is built into the maven pom file. If you want to run it outisde the normal maven build:
 
-## Linting
-
-//docker run -it --rm -v "$PWD:/app" -w /app openjdk:8u131-jdk-alpine ./mvnw verify
-
-docker run -it --rm -v "$PWD:/app" -w /app openjdk:8u131-jdk-alpine
-
-./mvnw verify
-
-# https://gleclaire.github.io/findbugs-maven-plugin/plugin-info.html
-./mvnw findbugs:check
-./mvnw findbugs:gui
-
-## https://maven.apache.org/plugins/maven-pmd-plugin/
-./mvnw pmd:check
-
-# https://maven.apache.org/plugins/maven-checkstyle-plugin/plugin-info.html
-# http://google.github.io/styleguide/javaguide.html
-./mvnw checkstyle:check
-
-## http://spotbugs.readthedocs.io/en/latest/maven.html
-./mvnw spotbugs:check
-./mvnw spotbugs:gui
+    ./lint.sh
